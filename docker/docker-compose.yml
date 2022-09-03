@@ -1,0 +1,22 @@
+version: '3.0'
+
+services:
+  postgres:
+    container_name: nodejs_login
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: admin
+      POOSTGRES_DB: root
+      PG_DATA: /data/postgres
+    volumes:
+      - ../database/postgres:/data/nodejs_login
+    ports:
+      - "5432:5432"
+volumes:
+  postgres:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ../database
